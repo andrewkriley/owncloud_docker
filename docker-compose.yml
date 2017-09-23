@@ -1,0 +1,9 @@
+version: "2"
+
+services:
+    owncloud:
+        image: owncloud:latest
+        ports:
+          - "80:80"
+        volumes:
+            - ./owncloud:/var/www/html

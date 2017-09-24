@@ -2,8 +2,22 @@ version: "2"
 
 services:
     owncloud:
-        image: owncloud:latest
-        ports:
-          - "80:80"
-        volumes:
-            - ./owncloud:/var/www/html
+      image: owncloud:latest
+      ports:
+        - "80:80"
+      links:
+        - mariadb
+      volumes:
+          - ./owncloud:/var/www/html
+      depends_on:
+        - mariadb
+
+    mariadb:
+      image: mariadb:10.3.1
+      environment:
+        - MYSQL_ROOT_PASSWORD=cisco123
+        - MYSQL_DATABASE=owncloud
+      ports:
+        - '3306:3306'
+      volumes:
+        - ./mariadb:/var/lib/mysql

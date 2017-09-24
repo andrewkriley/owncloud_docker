@@ -15,7 +15,7 @@ services:
     mariadb:
       image: mariadb:10.3.1
       environment:
-        - MYSQL_ROOT_PASSWORD=cisco123
+        - MYSQL_ROOT_PASSWORD=123
         - MYSQL_DATABASE=owncloud
       ports:
         - '3306:3306'
